@@ -84,6 +84,14 @@ export default function Movies3() {
 
 export function TheMovies({ data, show }) {
 
+    if (!data.Search) return (<div></div>)
+
+    if (!show) return (<div></div>)
+
+    if (data.error) return (<div>falha na requisição</div>)
+
+    if (data.Search === '') return (<div>carregando...</div>)
+
     //////////////////////////////////////////////
 
 
@@ -95,14 +103,7 @@ export function TheMovies({ data, show }) {
         setUrlMovie(`https://www.omdbapi.com/?apikey=6d17a1f&i=${imdbID}`)
     }
 
-    //////////////////////////////////////////////
-
-
-    if (!show) return (<div></div>)
-
-    if (data.error) return (<div>falha na requisição</div>)
-
-    if (data.Search === '') return (<div>carregando...</div>)
+    //////////////////////////////////////////////   
 
     return (
 
